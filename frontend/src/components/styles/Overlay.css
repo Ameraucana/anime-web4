@@ -1,0 +1,26 @@
+div.overlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background: #140e1de1;
+
+    /* min-height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    */
+}/*17151ae1  140d1de1  */
+.overlay::-webkit-scrollbar {
+    background: transparent;
+}
+.overlay::-webkit-scrollbar-thumb {
+    background: #CCC;
+    border-radius: 5px 0 0 5px;
+}
+.overlay::-webkit-scrollbar-track {
+    background: transparent;
+}

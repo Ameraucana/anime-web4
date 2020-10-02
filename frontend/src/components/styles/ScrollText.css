@@ -1,0 +1,41 @@
+@font-face {
+    font-family: "Noe Display Black";
+    src: url("../../resources/NoeDisplay-BoldItalic.otf");
+
+}
+div#scrollingTextBox {
+    white-space: nowrap;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+    height: 100vh;
+}
+p.scrollingText {
+    font-family: "Noe Display Black";
+    font-size: 33vh;
+    margin: 0;
+    user-select: none;
+    animation: scroll 4s linear infinite;
+}
+p.scrollingText.reverseScroll {
+    animation: scroll-reverse 4s linear infinite;
+}
+@keyframes scroll {
+    from {
+        transform: translateX(-58vh);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+@keyframes scroll-reverse {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-58vh);
+    }
+}

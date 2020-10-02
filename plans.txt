@@ -1,0 +1,22 @@
+UPDATE names FILE
+1. bring in api listed shows
+2. read file
+3. for anilistName of apiData
+	1. if !Object.keys(fileObj).includes(anilistName), add anilistName 		   to fileObj with no value
+4. for name of Object.keys(fileObj)
+	1. if !apiData.includes(name), remove name from fileObj
+5. stringify fileObj and write it to names
+
+UPDATE names ENTRY NICKNAME
+1. send in anilist name and user-specified name [aniName, userSpec]
+2. read file
+3. for name of Object.keys(fileObj)
+	1. if aniName === name, fileObj[aniName] = userSpec
+	2. break
+
+GET NAMES FROM names
+1. send GET to backend
+2. read file
+3. send back to frontend
+4. pass { name, nickname } to each AnimeListItem (must match)
+
