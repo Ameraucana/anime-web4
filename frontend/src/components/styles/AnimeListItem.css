@@ -2,15 +2,16 @@ div.grid {
     display: grid;
     column-gap: 50px;
     justify-items: start;
-    grid-template-columns: min-content min-content;
-    grid-template-rows: auto;
-    grid-template-areas: "image info";
+    grid-template-columns: min-content 1fr 1fr;
+    grid-template-rows: auto; 
+    grid-template-areas: "image info ratings";
     
 }
 
 img.coverImage {
     grid-area: image;
     border-radius: 3px;
+    color: #DDD;
 }
 div.infoSection {
     grid-area: info;
@@ -18,6 +19,12 @@ div.infoSection {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+}
+.chart {
+    grid-area: ratings;
+    align-self: center;
+    background: #383142ca;
+    border-radius: 3px;
 }
 
 div.episodeZone {
@@ -92,5 +99,6 @@ button:active {
     background: #DDD;
 }
 button.unauthorized {
-    background: #eb7777ca;
+    background: #CCC;
+    color: #BBB;
 }

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import EpisodeCountdown from "./EpisodeCountdown";
+import RatingChart from "./RatingChart.js";
 
 import "./styles/AnimeListItem.css";
 
@@ -107,6 +108,11 @@ export default (props) => {
 
                 <EpisodeCountdown nextEpisodeIn={props.nextEpisodeIn} nextEpisode={props.nextEpisode} endDate={props.endDate} episodes={props.episodes}/>
 
+            </div>
+            <div className="chart">
+                <RatingChart 
+                    meanScore={props.meanScore}
+                    scoreDist={props.scoreDist}/>
             </div>
         </div>
     );

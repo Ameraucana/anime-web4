@@ -10,6 +10,7 @@ socket.connect("http://localhost:5000");
 
 export default ({isLoading, allAnime, authorized}) => {
     const [ allInfo, setAllInfo ] = useState([]);
+
     const onClick = async () => {
         let fileContent = await axios.get("http://localhost:5000/read");
         fileContent = fileContent.data;
@@ -40,15 +41,17 @@ export default ({isLoading, allAnime, authorized}) => {
                             episodes: anime.media.episodes,
                             nextEpisode: anime.media.nextAiringEpisode?.episode,
                             nextEpisodeIn: anime.media.nextAiringEpisode?.timeUntilAiring,
-                            endDate: anime.media.endDate
-                            
-                        })
+                            endDate: anime.media.endDate,
+                            meanScore: anime.media.meanScore,
+                            scoreDistribution: anime.media.stats.scoreDistribution
+                        });
                         break;
                     }
                 }
             }
             setAllInfo(items);
         }
+
         getNames();
     }, [allAnime]);
 
@@ -67,15 +70,17 @@ export default ({isLoading, allAnime, authorized}) => {
                     allInfo.map(value => {
 
                         return <AnimeListItem key={value.key}
-                                            id={value.id}
-                                            title={value.titleInfo}
-                                            imageUrl={value.coverImage}
-                                            progress={value.progress}
-                                            episodeCount={value.episodes}
-                                            nextEpisode={value.nextEpisode}
-                                            nextEpisodeIn={value.nextEpisodeIn}
-                                            endDate={value.endDate}
-                                            authorized={authorized}/>;
+                            id={value.id}
+                            title={value.titleInfo}
+                            imageUrl={value.coverImage}
+                            progress={value.progress}
+                            episodeCount={value.episodes}
+                            nextEpisode={value.nextEpisode}
+                            nextEpisodeIn={value.nextEpisodeIn}
+                            endDate={value.endDate}
+                            meanScore={value.meanScore}
+                            scoreDist={value.scoreDistribution}
+                            authorized={authorized}/>;
                     })
                 }
             </div>
