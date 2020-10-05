@@ -1,7 +1,6 @@
 div.grid {
     display: grid;
     column-gap: 50px;
-    justify-items: start;
     grid-template-columns: min-content 1fr 1fr;
     grid-template-rows: auto; 
     grid-template-areas: "image info ratings";
@@ -15,6 +14,10 @@ img.coverImage {
 }
 div.infoSection {
     grid-area: info;
+    background: #38314265;
+    justify-self: stretch;
+    border-radius: 3px;
+    padding: 0 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,9 +25,9 @@ div.infoSection {
 }
 .chart {
     grid-area: ratings;
-    align-self: center;
-    background: #383142ca;
+    background: #38314265;
     border-radius: 3px;
+    position: relative;
 }
 
 div.episodeZone {
@@ -62,6 +65,7 @@ div.nameZone {
     flex-direction: row;
     align-items: stretch;
     column-gap: 5px;
+    width: 100%;
 }
 div.nameZone > input {
     padding: 10px 5px;
@@ -71,6 +75,7 @@ div.nameZone > input {
     color: #DDD;
     font-size: 20pt;
     border-radius: 5px;
+    width: 100%;
 
     transition: background .3s, color .3s;
 }

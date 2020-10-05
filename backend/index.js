@@ -9,7 +9,7 @@ const app = express();
 const port = 5000;
 
 const server = http.Server(app);
-server.listen(port, () => console.log(`now listening on port ${port}`));
+server.listen(port, () => console.log(`now listening on port ${port}, env ${app.get("env")}`));
 const io = require("socket.io")(server);
 
 const corsOptions = {

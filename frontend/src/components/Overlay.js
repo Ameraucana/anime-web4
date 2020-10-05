@@ -24,7 +24,7 @@ export default () => {
             if (response.data === "invalid") {
                 window.open("https://anilist.co/api/v2/oauth/authorize?client_id=4134&redirect_uri=http://localhost:5000/auth&response_type=code");
             } else {
-                //setTokenIsReady(true);
+                setTokenIsReady(true);
             }
         }
         authenticate();

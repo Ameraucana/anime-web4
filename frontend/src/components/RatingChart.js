@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import Chart from "chart.js";
 import "chartjs-plugin-datalabels";
 
+
 export default (props) => {
     const canvasRef = useRef(null);
     
@@ -42,6 +43,8 @@ export default (props) => {
                 }],
             },
             options:{
+                maintainAspectRatio: false,
+                responsive: true,
                 legend: {
                     display: false
                 },
@@ -62,6 +65,7 @@ export default (props) => {
                 title: {
                     text: `(average score ${props.meanScore})`,
                     display: true,
+                    fontSize: 20,
                     padding: 15
                 },
                 layout: {
@@ -77,7 +81,10 @@ export default (props) => {
                         anchor: "end",
                         align: "top",
                         offset: -5,
-                        display: "auto"
+                        display: "auto",
+                        font: {
+                            size: 15
+                        }
                     }
                 }
             }
