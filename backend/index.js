@@ -2,7 +2,6 @@ const axios = require("axios");
 const express = require("express");
 const http = require("http");
 const cors = require("cors");
-const { request, response } = require("express");
 const fs = require("fs").promises;
 
 const app = express();
@@ -11,6 +10,12 @@ const port = 5000;
 const server = http.Server(app);
 server.listen(port, () => console.log(`now listening on port ${port}, env ${app.get("env")}`));
 const io = require("socket.io")(server);
+
+process.on("SIGINT", () => {
+    server.close(() => {
+        process.exit(0);
+    });
+});
 
 const corsOptions = {
     origin: "http://localhost:3000"
