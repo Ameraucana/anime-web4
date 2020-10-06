@@ -5,23 +5,12 @@ import axios from "axios";
 import "./styles/AnimeListBox.css";
 
 import AnimeListItem from "./AnimeListItem";
+import TopBar from "./TopBar";
 
 socket.connect("http://localhost:5000");
 
 export default ({isLoading, allAnime, authorized}) => {
     const [ allInfo, setAllInfo ] = useState([]);
-
-    const onClick = async () => {
-        let fileContent = await axios.get("http://localhost:5000/read");
-        fileContent = fileContent.data;
-        for (const [ name, nickname ] of Object.entries(fileContent)) {
-            const info = allInfo.find(obj => obj.titleInfo[0] === name);
-            if (info.nextEpisode !== 1) {
-                window.open(`https://nyaa.si/?f=0&c=1_2&q=${nickname || name}`);
-            }
-        }
-    }
-
 
     useEffect(() => {
         // this section effectively combines the file's names with the api's data
@@ -64,7 +53,10 @@ export default ({isLoading, allAnime, authorized}) => {
     } else {
         displayedContent = 
         <>
-            <button id="goButton" onClick={() => onClick()}>Go</button>
+            <TopBar 
+                nameInfo={allInfo.map(entry => entry.titleInfo)}
+                endDates={allInfo.map(entry => entry.endDate)}/>
+                
             <div className="animeListBox">
                 {
                     allInfo.map(value => {

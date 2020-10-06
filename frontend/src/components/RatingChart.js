@@ -89,7 +89,8 @@ export default (props) => {
                 }
             }
         });
-    })
+        // eslint-disable-next-line
+    }, []);
 
     return (
         <canvas ref={canvasRef}/>

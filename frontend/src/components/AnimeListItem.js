@@ -18,10 +18,11 @@ export default (props) => {
 
     const nameChanged = async () => {
         if (actualTitle !== initialTitle) {
-            setInitialTitle(actualTitle);
+            const actualTitleTrimmed = actualTitle.trim();
+            setInitialTitle(actualTitleTrimmed);
             await axios.post(
                 "http://localhost:5000/namechange", 
-                [ props.title[0], actualTitle ],
+                [ props.title[0], actualTitleTrimmed ],
                 {
                     headers: {
                         "Content-Type": "application/json"
