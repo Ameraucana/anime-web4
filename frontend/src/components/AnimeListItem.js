@@ -79,10 +79,10 @@ export default (props) => {
     }, [progress, props.id])
 
     const decrement = () => {
-        setProgress(progress - 1);
+        setProgress(Math.max(progress - 1, 0));
     }
     const increment = () => {
-        setProgress(progress + 1);
+        setProgress(Math.min(progress + 1, props.episodeCount || progress + 1));
     }
 
     return (

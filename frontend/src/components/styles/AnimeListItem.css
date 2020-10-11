@@ -7,6 +7,17 @@ div.grid {
     
 }
 
+@media (max-width: 2000px) {
+    div.grid {
+        grid-template-columns: min-content 1fr;
+        grid-template-areas: "image info";
+    }
+    
+    .chart {
+        display: none;
+    }
+}
+
 img.coverImage {
     grid-area: image;
     border-radius: 3px;
