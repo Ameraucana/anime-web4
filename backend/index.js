@@ -2,6 +2,7 @@ const axios = require("axios");
 const express = require("express");
 const http = require("http");
 const cors = require("cors");
+const { createHttpTerminator } = require("http-terminator");
 const fs = require("fs").promises;
 
 const app = express();
@@ -11,16 +12,14 @@ const server = http.Server(app);
 server.listen(port, () => console.log(`now listening on port ${port}, env ${app.get("env")}`));
 const io = require("socket.io")(server);
 
-process.on("SIGINT", () => {
-    server.close(() => {
-        process.exit(0);
-    });
+const httpTerminator = createHttpTerminator({server});
+
+process.on("SIGINT", async () => {
+    await httpTerminator.terminate();
 });
 
-const corsOptions = {
-    origin: "http://localhost:3000"
-};
-app.use(cors(corsOptions));
+
+app.use(cors());
 
 app.use(express.json());
 
