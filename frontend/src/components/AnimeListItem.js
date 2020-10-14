@@ -93,7 +93,8 @@ export default (props) => {
 
                 <div className="nameZone">
                     <input value={actualTitle} onChange={(event) => setActualTitle(event.target.value)}
-                        onBlur={() => nameChanged()} />
+                        onBlur={() => nameChanged()}
+                        spellCheck={false} />
                     <button onClick={() => reset()}>Reset</button>
                 </div>
 
