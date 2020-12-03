@@ -33,6 +33,7 @@ export default (props) => {
     }
 
     const reset = async () => {
+        setInitialTitle(props.title[0]);
         setActualTitle(props.title[0]);
         await axios.post(
             "http://localhost:5000/reset", 
