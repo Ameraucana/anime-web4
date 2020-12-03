@@ -63,6 +63,7 @@ app.post("/namechange", async (request, response) => {
 });
 
 app.post("/reset", async (request, response) => {
+    console.log(request.body);
     const [ targetName ] = request.body;
     const fileContent = await fs.readFile("./names.json", "utf8");
     const fileObj = JSON.parse(fileContent);
