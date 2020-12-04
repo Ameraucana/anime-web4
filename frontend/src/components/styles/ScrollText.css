@@ -25,7 +25,7 @@ p.scrollingText.reverseScroll {
 }
 @keyframes scroll {
     from {
-        transform: translateX(-58vh);
+        transform: translateX(-58.3vh);
     }
     to {
         transform: translateX(0);
@@ -36,6 +36,6 @@ p.scrollingText.reverseScroll {
         transform: translateX(0);
     }
     to {
-        transform: translateX(-58vh);
+        transform: translateX(-58.3vh);
     }
 }
