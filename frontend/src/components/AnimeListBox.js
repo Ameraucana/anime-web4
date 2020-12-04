@@ -24,6 +24,7 @@ export default ({isLoading, allAnime, authorized}) => {
                         items.push({
                             key: anime.id,
                             id: anime.id,
+                            siteUrl: anime.media.siteUrl,
                             titleInfo: [name, nickname],
                             coverImage: anime.media.coverImage.large,
                             progress: anime.progress,
@@ -63,6 +64,7 @@ export default ({isLoading, allAnime, authorized}) => {
 
                         return <AnimeListItem key={value.key}
                             id={value.id}
+                            siteUrl={value.siteUrl}
                             title={value.titleInfo}
                             imageUrl={value.coverImage}
                             progress={value.progress}

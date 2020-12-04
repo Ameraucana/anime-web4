@@ -88,8 +88,10 @@ export default (props) => {
 
     return (
         <div className="grid">
-            <img className="coverImage" 
-                 src={props.imageUrl} alt="Anime Cover"/>
+            <a href={props.siteUrl} target="_blank" rel="noopener noreferrer">
+                <img className="coverImage" 
+                     src={props.imageUrl} alt="Anime Cover"/>
+            </a>
             <div className="infoSection">
 
                 <div className="nameZone">

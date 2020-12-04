@@ -39,6 +39,7 @@ export default () => {
                             progress
                             id
                             media {
+                                siteUrl
                                 episodes
                                 title {
                                     romaji
