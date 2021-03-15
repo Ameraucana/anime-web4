@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import EpisodeCountdown from "./EpisodeCountdown";
 import RatingChart from "./RatingChart.js";
+import DownloadRange from "./DownloadRange.js";
 
 import "./styles/AnimeListItem.css";
 
@@ -101,14 +102,18 @@ export default (props) => {
                     <button onClick={() => reset()}>Reset</button>
                 </div>
 
-                <div className="episodeZone">
-                    <button onClick={() => decrement()} disabled={!props.authorized}
-                            className={props.authorized ? "episodeButton" : "episodeButton unauthorized"}>◀</button>
+                <div className="episodeDownloadRangeZone">
+                    <div className="episodeZone">
+                        <button onClick={() => decrement()} disabled={!props.authorized}
+                                className={props.authorized ? "episodeButton" : "episodeButton unauthorized"}>◀</button>
 
-                    <span className="episodeCounter">{progress}/{props.episodeCount || "?"}</span>
+                        <span className="episodeCounter">{progress}/{props.episodeCount || "?"}</span>
 
-                    <button onClick={() => increment()} disabled={!props.authorized}
-                            className={props.authorized ? "episodeButton" : "episodeButton unauthorized"}>▶</button>
+                        <button onClick={() => increment()} disabled={!props.authorized}
+                                className={props.authorized ? "episodeButton" : "episodeButton unauthorized"}>▶</button>
+                    </div>
+
+                    <DownloadRange nextEpisode={props.nextEpisode} progress={progress} episodes={props.episodes}/>
                 </div>
 
                 <EpisodeCountdown nextEpisodeIn={props.nextEpisodeIn} nextEpisode={props.nextEpisode} endDate={props.endDate} episodes={props.episodes}/>

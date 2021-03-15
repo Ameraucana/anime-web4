@@ -40,6 +40,7 @@ export default () => {
                             id
                             media {
                                 siteUrl
+                                status
                                 episodes
                                 title {
                                     romaji

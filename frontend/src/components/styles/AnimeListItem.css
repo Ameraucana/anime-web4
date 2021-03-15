@@ -41,8 +41,15 @@ div.infoSection {
     position: relative;
 }
 
-div.episodeZone {
+div.episodeDownloadRangeZone {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+div.episodeZone {
+    display: inline-flex;
 }
 div.episodeZone > span {
     color: #383142ca;

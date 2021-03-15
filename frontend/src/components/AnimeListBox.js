@@ -24,6 +24,7 @@ export default ({isLoading, allAnime, authorized}) => {
                         items.push({
                             key: anime.id,
                             id: anime.id,
+                            status: anime.media.status,
                             siteUrl: anime.media.siteUrl,
                             titleInfo: [name, nickname],
                             coverImage: anime.media.coverImage.large,
@@ -56,7 +57,7 @@ export default ({isLoading, allAnime, authorized}) => {
         <>
             <TopBar 
                 nameInfo={allInfo.map(entry => entry.titleInfo)}
-                endDates={allInfo.map(entry => entry.endDate)}/>
+                statuses={allInfo.map(entry => entry.status)}/>
                 
             <div className="animeListBox">
                 {

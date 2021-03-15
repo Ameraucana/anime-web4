@@ -1,0 +1,15 @@
+.downloadRange {
+    display: inline;
+    text-align: center;
+    background: #DDD;
+    color: #383142ca;
+    padding: 5px;
+    border-radius: 3px;
+}
+.nothing {
+    display: inline;
+    height: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+}

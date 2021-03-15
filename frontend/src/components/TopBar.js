@@ -19,15 +19,14 @@ export default (props) => {
 
     useEffect(() => {
         let airingCount = 0;
-        for (let endDate of props.endDates) {
-            // I figure that if there's a year, everything else is there.
-            // even if it's not, a date's a date
-            if (!endDate.year) {
+        for (let status of props.statuses) {
+            console.log(status);
+            if (status === "RELEASING") {
                 airingCount++;
             }
         }
-        setAiringInfo([airingCount, Object.keys(props.endDates).length - airingCount])
-    }, [props.endDates])
+        setAiringInfo([airingCount, Object.keys(props.statuses).length - airingCount])
+    }, [props.statuses])
 
     return (
         <div className="topBar">
