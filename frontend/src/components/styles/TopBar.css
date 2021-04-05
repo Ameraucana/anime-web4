@@ -7,7 +7,7 @@ div.topBar {
     right: 0;
     left: 0;
     z-index: 999;
-    padding-left: 20px
+    padding: 10px 10px 10px 20px;
 }
 div.topBar > p {
     color: #DDD;
@@ -17,6 +17,15 @@ span.airing {
 }
 span.completed {
     color: #FA7A7A;
+}
+span.unaired {
+    color: #7555d5;
+}
+span.hiatus {
+    color: #d59955;
+}
+span.cancelled {
+    color: #142333;
 }
 #goButton {
 

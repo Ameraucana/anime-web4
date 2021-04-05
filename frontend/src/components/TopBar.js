@@ -3,14 +3,14 @@ import axios from "axios";
 
 import "./styles/TopBar.css";
 
-export default (props) => {
+export default ({statuses, nameInfo}) => {
     const [ airingInfo, setAiringInfo ] = useState([]);
 
     const onClick = async () => {
         let fileContent = await axios.get("http://localhost:5000/read");
         fileContent = fileContent.data;
         for (const [ name, nickname ] of Object.entries(fileContent)) {
-            const info = props.nameInfo.find(show => show[0] === name);
+            const info = nameInfo.find(show => show[0] === name);
             if (info.nextEpisode !== 1) {
                 window.open(`https://nyaa.si/?f=0&c=1_2&q=${nickname || name}`);
             }
@@ -18,20 +18,76 @@ export default (props) => {
     }
 
     useEffect(() => {
-        let airingCount = 0;
-        for (let status of props.statuses) {
+        let airingCount = 0,
+            unreleasedCount = 0,
+            completedCount = 0,
+            cancelledCount = 0,
+            hiatusCount = 0;
+        for (let status of statuses) {
             console.log(status);
-            if (status === "RELEASING") {
-                airingCount++;
+            switch (status) {
+                case "RELEASING":
+                    airingCount++;
+                    break;
+                case "NOT_YET_RELEASED":
+                    unreleasedCount++;
+                    break;
+                case "FINISHED":
+                    completedCount++;
+                    break;
+                case "CANCELLED":
+                    cancelledCount++;
+                    break;
+                case "HIATUS":
+                    hiatusCount++;
+                    break;
+                default:
+                    break;
             }
         }
-        setAiringInfo([airingCount, Object.keys(props.statuses).length - airingCount])
-    }, [props.statuses])
+        setAiringInfo([airingCount, completedCount, unreleasedCount, cancelledCount, hiatusCount]);
+    }, [statuses])
 
-    return (
-        <div className="topBar">
-            <button id="goButton" onClick={() => onClick()}>Go</button>
-            <p><span className="airing">{airingInfo[0]}</span> airing, <span className="completed">{airingInfo[1]}</span> complete</p>
-        </div>
-    );
+    const categoryLister = () => {
+        let jsxItems = [],
+            indexToClassname = {
+                0: "airing",
+                1: "completed",
+                2: "unaired",
+                3: "cancelled",
+                4: "hiatus"},
+            indexToVerb = {
+                0: "airing",
+                1: "completed",
+                2: "yet to start",
+                3: "cancelled",
+                4: "on hiatus"
+            };
+
+        airingInfo.forEach((count, index) => {
+            if (count) {
+                jsxItems.push(
+                    <span key={index} className={indexToClassname[index]}>{count} {indexToVerb[index]}</span>
+                );
+            }
+        });
+        return jsxItems;
+    }
+
+    if (airingInfo) {
+        return (
+            <div className="topBar">
+                <button id="goButton" onClick={() => onClick()}>Go</button>
+                {categoryLister()}
+            </div>
+        )
+    } else {
+        return (
+            <div className="topBar">
+                <button id="goButton" onClick={() => onClick()}>Go</button>
+                
+            </div>
+        );
+    }
+    
 }
