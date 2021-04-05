@@ -42,15 +42,22 @@ div.infoSection {
 }
 
 div.episodeDownloadRangeZone {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "progress info";
     gap: 10px;
 }
-
 div.episodeZone {
     display: inline-flex;
+    grid-area: progress;
+    justify-self: center;
 }
+div.downloadRange {
+    grid-area: info;
+    justify-self: center;
+}
+
 div.episodeZone > span {
     color: #383142ca;
     background: #DDD;

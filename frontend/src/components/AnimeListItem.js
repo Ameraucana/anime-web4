@@ -84,7 +84,7 @@ export default (props) => {
         setProgress(Math.max(progress - 1, 0));
     }
     const increment = () => {
-        setProgress(Math.min(progress + 1, props.episodeCount || progress + 1));
+        setProgress(Math.min(progress + 1, props.nextEpisode - 1 || props.episodeCount));
     }
 
     return (
@@ -113,7 +113,10 @@ export default (props) => {
                                 className={props.authorized ? "episodeButton" : "episodeButton unauthorized"}>▶</button>
                     </div>
 
-                    <DownloadRange nextEpisode={props.nextEpisode} progress={progress} episodes={props.episodes}/>
+                    <DownloadRange nextEpisode={props.nextEpisode} 
+                                    progress={progress} 
+                                    episodes={props.episodeCount}
+                                    airing={props.status}/>
                 </div>
 
                 <EpisodeCountdown nextEpisodeIn={props.nextEpisodeIn} nextEpisode={props.nextEpisode} endDate={props.endDate} episodes={props.episodes}/>
