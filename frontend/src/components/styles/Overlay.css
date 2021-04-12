@@ -16,11 +16,12 @@ div.overlay {
 }/*17151ae1  140d1de1  */
 .overlay::-webkit-scrollbar {
     background: transparent;
+    width: 17px;
 }
 .overlay::-webkit-scrollbar-thumb {
     background: #CCC;
     border-radius: 5px 0 0 5px;
 }
 .overlay::-webkit-scrollbar-track {
-    background: transparent;
+    background: #38314265;
 }
